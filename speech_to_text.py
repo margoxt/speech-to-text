@@ -20,9 +20,9 @@ def record_text():
                 captured_audio = r.listen(audio_source)
 
                 #The audio2 will be then used by the recognize_google function to recognize the spoken words and make it string
-                r_text = r.recognize_google(captured_audio)
+                recog_text = r.recognize_google(captured_audio)
 
-                return r_text
+                return recog_text
 
         except sr.RequestError as error:
             print("Could not request results; {0}".format(error))
@@ -33,16 +33,18 @@ def record_text():
     return
 
 #Step 2: Take the string from step 1 and output it as a text file
-def output_text(text):
+def output_text(speech_text):
 
     # Open a text file using the open function, this will allow us to access the output.txt file in the directory of the program. If there's no file, the program will create one automatically
     f = open("output.txt", "a")
-    
+    f.write(speech_text)
+    f.write("\n")               #So that each text is on a new line if we say multiple things
+    f.close()                   #Close the access file
     return
 
 #Step 3: The while loop calls the two functions on repeat
 while(True):
-    text = record_text()
-    output_text(text)
+    speech_text = record_text()
+    output_text(speech_text)
 
     print("Wrote Text")

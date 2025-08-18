@@ -6,12 +6,14 @@ Speech to Text Program Overview
 
 ======================================================================================
 
-Notes:
+[NOTES]
 
 Windows Install of Imports:
+
 * Python Speech Recognition Module: pip install speechrecognition
 * Python pyttsx3 Module: pip install pyttsx3 - You can change voice, speed and volume
-* If pyttsx3 is outdated: python.exe -m pip install --upgrade pip
+        - If pyttsx3 is outdated: python.exe -m pip install --upgrade pip
+* pip install pyaudio
 
 MacOS Install of Imports:
 * pip3 install speechrecognition
@@ -26,3 +28,25 @@ Code Notes:
   wait before it starts listening to you
 
 * f = open("output.txt", "a"), the "a" means append, so it will add to the end of the file instead of overwriting it
+  once done, the file will be stored in the f (file) variable
+* What open("output.txt", "a") does "a" means append mode. This just tells Python: “If the file exists, don’t erase it. 
+  Add new stuff at the end. If it doesn’t exist, create it.” But it does not actually write anything yet. It just opens 
+  the file handle.
+* Why you still need f.write(text), f = open("output.txt", "a") → opens the file. f.write(text) → actually writes the 
+  string into the file. If you skip f.write(text), nothing goes into the file, it just opens and closes.
+
+
+Run in Bash Terminal:
+
+* touch output.txt (if no file)
+* tail -f output.txt
+        - This will show you the last 10 lines of the file, 
+        - and the -f means keep following the file in real time (live monitoring)
+* python speech_to_text.py (filename)
+        - For MacOS use, python3 speech_to_text.py (filename)
+
+
+Fix Install Precompiled PyAudio Wheel:
+* Usual problem is that it often fails on Windows because PyAudio needs special C++ build tools to compile.
+* Go to this link https://www.cgohlke.com/#pyaudio, and download the .whl file that matches your Python version.
+* Install it using pip install PyAudio-0.2.11-cp313-cp313-win_amd64.whl
