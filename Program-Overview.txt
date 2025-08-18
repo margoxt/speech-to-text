@@ -4,8 +4,25 @@ Speech to Text Program Overview
 2) Output the speech to text in a file
 3) Put the steps in a while loop to convert speech to text
 
-==================================================================
+======================================================================================
 
 Notes:
 
-* def - function
+Windows Install of Imports:
+* Python Speech Recognition Module: pip install speechrecognition
+* Python pyttsx3 Module: pip install pyttsx3 - You can change voice, speed and volume
+* If pyttsx3 is outdated: python.exe -m pip install --upgrade pip
+
+MacOS Install of Imports:
+* pip3 install speechrecognition
+* brew install python3-pyaudio
+* pip3 install pyaudio
+
+Code Notes:
+
+* adjust_for_ambient_noise is a method of the recognizer class from the speech_recognition package
+* (source2, duration=0.2), it listens to the background noise for a short time, and adjusts the microphone 
+  sensitivity (use calibrate). If you increase the duration, the calibration is better but there;s a short 
+  wait before it starts listening to you
+
+* f = open("output.txt", "a"), the "a" means append, so it will add to the end of the file instead of overwriting it
