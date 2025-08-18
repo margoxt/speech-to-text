@@ -1,0 +1,11 @@
+Speech to Text Program Overview
+
+1) Listen for audio input that can be interpreted as Speech
+2) Output the speech to text in a file
+3) Put the steps in a while loop to convert speech to text
+
+==================================================================
+
+Notes:
+
+* def - function
