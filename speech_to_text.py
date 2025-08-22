@@ -25,26 +25,24 @@ def record_text():
                 return recog_text
 
         except sr.RequestError as error:
-            print("Could not request results; {0}".format(error))
+            print(f"Could not request results; {error}")
 
         except sr.UnknownValueError:
-            print("Unknown Error Occured")
+            print("Sorry, I could not understand that.")
 
-    return
 
 #Step 2: Take the string from step 1 and output it as a text file
 def output_text(speech_text):
 
     # Open a text file using the open function, this will allow us to access the output.txt file in the directory of the program. If there's no file, the program will create one automatically
-    f = open("output.txt", "a")
-    f.write(speech_text)
-    f.write("\n")               #So that each text is on a new line if we say multiple things
-    f.close()                   #Close the access file
-    return
+    with open("output.txt", "a") as f:              #with open(...) as f, python creates a context manager.
+        f.write(speech_text + "\n")
+    return speech_text
 
 #Step 3: The while loop calls the two functions on repeat
+print("Listening...")
+
 while(True):
     speech_text = record_text()
-    output_text(speech_text)
-
-    print("Wrote Text")
+    if speech_text:     #Only print if we got valid text
+        print(output_text(speech_text))
