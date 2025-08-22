@@ -5,7 +5,7 @@ The recognized text is saved into a file (`output.txt`) and also displayed in th
 
 ---
 
-## Features
+## 🔧Features
 - 🎙️ Listens to your microphone and converts speech into text.  
 - 📝 Saves everything you say into `output.txt`.  
 - ⚡ Handles errors (like background noise or unrecognized speech).  
